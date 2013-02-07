@@ -1,0 +1,14 @@
+<section>
+        <article id="results">
+            <div class="alignleft border_radius"><img src=<%= @data["Poster"] %> /></div>
+            <div class="alignright border_radius">
+              <div><span id="title"><%= @data["Title"] %></span></div>
+              <div><span class="fields">Year:</span><%= @data["Year"] %></div>
+              <div><span class="fields">Rated:</span> <%= @data["Rated"] %></div>
+              <div><span class="fields">Director:</span> <%= @data["Director"] %></div>
+              <div><span class="fields">Released:</span> <%= @data["Released"] %></div>
+              <div><span class="fields">Runtime:</span> <%= @data["Runtime"] %></div>
+              <div><p><em><%= @data["Plot"] %></em></p></div>
+            </div>
+          </article>
+</section>

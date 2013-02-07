@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Moviezzzzz</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <link href='http://fonts.googleapis.com/css?family=Skranji' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/style.css" />
+    <script>
+      $(document).ready(function() {
+
+        $("#search_box button").click(function(){
+            $("img").show();
+        });
+      });
+
+    </script>
+  </head>
+  <body>
+    <div id="container">
+      <header>
+        <h1>Moviezzzzzzzzzz</h1>
+      </header>
+      <nav>
+        <ul>
+          <li><a href="#">Home | </a></li>
+          <li><a href="#">About | </a></li>
+          <li><a href="#">FAQ | </a></li>
+        </ul>
+      </nav>
+      <div id="search_box">
+        <form method="get" action="/">
+          <input type="search" name="search" />
+          <button>GO!</button>
+        </form>
+      </div>
+      <%= yield  %>
+
+    </div>
+  </body>
+</html>
