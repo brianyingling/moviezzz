@@ -36,6 +36,8 @@ body {
   margin: 0 auto;
   background: rgb(7,61,126);
   border-radius: 10px;
+
+
 }
 
 #search_box {
@@ -91,6 +93,16 @@ article {
 img {
   border: 10px solid white;
   box-shadow: 1px 1px 3px #000;
+  -webkit-transition: all 0.25s ease-in;
+  -moz-transition: all 0.25s ease-in;
+  transition: all 0.25s ease-in;
+
+}
+
+img:hover {
+  -webkit-transform: scale(1.05);
+  -moz-transform: scale(1.05);
+  transform: scale(1.05);
 
 }
 
