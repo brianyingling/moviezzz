@@ -47,6 +47,7 @@ body {
 #search_box input {
   width: 400px;
   margin-bottom: 10px;
+  font-size: 18px;
 }
 
 section {
@@ -100,9 +101,9 @@ img {
 }
 
 img:hover {
-  -webkit-transform: scale(1.05);
-  -moz-transform: scale(1.05);
-  transform: scale(1.05);
+  -webkit-transform: scale(1.1);
+  -moz-transform: scale(1.1);
+  transform: scale(1.1);
 
 }
 
@@ -114,7 +115,7 @@ button {
 
 }
 
-#title {
+#title a {
   color: navy;
   font-size: 24px;
 }

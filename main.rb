@@ -14,7 +14,8 @@ get '/' do
   if params['search'].present?
     @search = params['search'].gsub(' ','+')
   end
-  @data = view_movie(@search) || nil
+  @data = view_movie(@search)
+  #redirect to "/movies/#{@data['Title']}/#{@data['Poster']}"
   erb :movie_data
 end
 
@@ -26,7 +27,20 @@ get '/about' do
   erb :about
 end
 
+get '/movies/:title/:Poster' do
+  @data = {}
+  @data['Title'] = params['title']
+  @data['Poster'] = params['poster']
+
+  erb :movie_data
+end
+
+
+
 def view_movie(search)
-  movie = HTTParty.get("http://www.omdbapi.com/?t=#{search}")
-  JSON(movie.body)
+  begin
+    JSON(HTTParty.get("http://www.omdbapi.com/?t=#{search}").body)
+  rescue
+    "error: could not connect"
+  end
 end
