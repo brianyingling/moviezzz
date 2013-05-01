@@ -1,9 +1,9 @@
+require 'rack'
 require 'pry'
 require 'bundler/setup'
 require 'sinatra'
 require 'sinatra/reloader' if development?
 require 'active_support/all'
-require 'JSON'
 require 'httparty'
 require 'pg'
 
