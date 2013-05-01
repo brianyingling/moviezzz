@@ -1,9 +1,11 @@
 require 'pry'
+require 'bundler/setup'
 require 'sinatra'
 require 'sinatra/reloader' if development?
 require 'active_support/all'
 require 'JSON'
 require 'httparty'
+require 'pg'
 
 # get '/' do
 #   erb :movie_data
@@ -13,9 +15,12 @@ require 'httparty'
 get '/' do
   if params['search'].present?
     @search = params['search'].gsub(' ','+')
+    @data = view_movie(@search)
+    sql = "insert into movies (title, poster, year, rated, released, runtime, genre, director, writers, actors, plot) values (\'#{@data['Title']}\',\'#{@data['Poster']}\',\'#{@data['Year']}\',\'#{@data['Rated']}\',\'#{@data['Released']}\',\'#{@data['Runtime']}\',\'#{@data['Genre']}\',\'#{@data['Director']}\',\'#{@data['Writer']}\',\'#{@data['Actors']}\',\'#{@data['Plot'].gsub("'","")}\')"
+    conn = PG.connect(:dbname=> 'movie_app', :host=>'localhost')
+    conn.exec(sql)
+    conn.close
   end
-  @data = view_movie(@search)
-  #redirect to "/movies/#{@data['Title']}/#{@data['Poster']}"
   erb :movie_data
 end
 
@@ -27,12 +32,14 @@ get '/about' do
   erb :about
 end
 
-get '/movies/:title/:Poster' do
-  @data = {}
-  @data['Title'] = params['title']
-  @data['Poster'] = params['poster']
+get '/movies' do
+  sql = "select poster from movies"
+  conn = PG.connect(:dbname=>'movie_app',:host=>'localhost')
+  binding.pry
+  @rows = conn.exec(sql)
+  conn.close
 
-  erb :movie_data
+ erb :posters
 end
 
 
