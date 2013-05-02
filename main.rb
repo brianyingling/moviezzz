@@ -1,5 +1,4 @@
 require 'rack'
-require 'pry'
 require 'bundler/setup'
 require 'sinatra'
 require 'sinatra/reloader' if development?
@@ -10,7 +9,7 @@ require 'pg'
 # get '/' do
 #   erb :movie_data
 # end
-class App < Sinatra::Base
+
 
   get '/' do
     if params['search'].present?
@@ -51,4 +50,3 @@ class App < Sinatra::Base
       "error: could not connect"
     end
   end
-end
